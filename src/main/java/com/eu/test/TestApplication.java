@@ -1,6 +1,6 @@
 package com.eu.test;
 
-import com.eu.test.domain.Booking;
+
 import com.eu.test.domain.Guest;
 import com.eu.test.domain.Room;
 import com.eu.test.service.BookingService;

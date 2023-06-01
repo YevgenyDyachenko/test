@@ -1,6 +1,8 @@
 package com.eu.test.service;
 
 import com.eu.test.domain.Booking;
+import com.eu.test.domain.Guest;
+import com.eu.test.domain.Room;
 import com.eu.test.dto.BookingDto;
 
 import com.eu.test.repository.BookingRepository;
@@ -10,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -44,19 +47,29 @@ public class BookingService {
     }
 
     public Optional<BookingDto> findById(Long id) {
+
         return bookingRepository.findById(id).map(BookingService::buildBookingDto);
     }
 
     public void reserve(Long roomId, Long guestId) {
-        var guest = guestRepository.findById(guestId).get();
-        var room = roomRepository.findById(roomId).get();
-        Booking booking = new Booking();
-        booking.setRoom(room);
-        booking.setGuest(guest);
-        booking.setNameBoo(room.getNameRoom() + "-"+ guest.getNameGuest());
-        bookingRepository.save(booking);
-    }
+        Optional<Guest> optionalGuest = guestRepository.findById(guestId);
+        Optional<Room> optionalRoom = roomRepository.findById(roomId);
 
+        if (optionalGuest.isPresent() && optionalRoom.isPresent()) {
+
+            var guest = guestRepository.findById(guestId).get();
+            var room = roomRepository.findById(roomId).get();
+            Booking booking = new Booking();
+            booking.setRoom(room);
+            booking.setGuest(guest);
+            booking.setNameBoo(room.getNameRoom() + "-" + guest.getNameGuest());
+            bookingRepository.save(booking);
+
+        } else {
+            throw new NoSuchElementException("No elements");
+        }
+
+    }
 
 
 
