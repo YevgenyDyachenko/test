@@ -1,9 +1,9 @@
 package com.eu.test.rest;
 
 import com.eu.test.domain.Booking;
-import com.eu.test.domain.Guest;
+
 import com.eu.test.dto.BookingDto;
-import com.eu.test.dto.GuestDto;
+
 import com.eu.test.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

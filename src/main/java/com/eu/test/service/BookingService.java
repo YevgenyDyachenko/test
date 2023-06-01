@@ -2,7 +2,7 @@ package com.eu.test.service;
 
 import com.eu.test.domain.Booking;
 import com.eu.test.dto.BookingDto;
-import com.eu.test.dto.GuestDto;
+
 import com.eu.test.repository.BookingRepository;
 import com.eu.test.repository.GuestRepository;
 import com.eu.test.repository.RoomRepository;

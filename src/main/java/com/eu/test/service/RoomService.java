@@ -1,11 +1,11 @@
 package com.eu.test.service;
 
 import com.eu.test.domain.Booking;
-import com.eu.test.domain.Guest;
+
 import com.eu.test.domain.Room;
-import com.eu.test.dto.GuestDto;
+
 import com.eu.test.dto.RoomDto;
-import com.eu.test.repository.GuestRepository;
+
 import com.eu.test.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

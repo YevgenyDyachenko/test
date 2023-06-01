@@ -1,10 +1,9 @@
 package com.eu.test.rest;
 
-import com.eu.test.domain.Guest;
+
 import com.eu.test.domain.Room;
-import com.eu.test.dto.GuestDto;
+
 import com.eu.test.dto.RoomDto;
-import com.eu.test.service.GuestService;
 import com.eu.test.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

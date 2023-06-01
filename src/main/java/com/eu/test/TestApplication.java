@@ -27,19 +27,19 @@ public class TestApplication {
 
             guestService.save(guest1);
             roomService.save(room1);
-            bookingService.reserve(1l, 1l);
+            bookingService.reserve(1L, 1L);
 
             Room room2 = new Room(2L, "SecondRoom", null);
             Guest guest2 = new Guest(2L, "Nicholson", null);
             guestService.save(guest2);
             roomService.save(room2);
-            bookingService.reserve(2l, 2l);
+            bookingService.reserve(2L, 2L);
 
             Room room3 = new Room(3L, "ThirdRoom", null);
             Guest guest3 = new Guest(3L, "Holmes", null);
             guestService.save(guest3);
             roomService.save(room3);
-            bookingService.reserve(3l, 3l);
+            bookingService.reserve(3L, 3L);
 
         };
 
