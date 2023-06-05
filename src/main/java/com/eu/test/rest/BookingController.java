@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -34,9 +35,9 @@ public class BookingController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/bookings/rooms/{roomId}/guests/{guestId}")
-    public ResponseEntity<Void> reserve(@PathVariable Long roomId, @PathVariable Long guestId) {
-        bookingService.reserve(roomId, guestId);
+    @PostMapping("/bookings/rooms/{roomId}/guests/{guestId}/start/{start}/end/{end}")
+    public ResponseEntity<Void> reserve(@PathVariable Long roomId, @PathVariable Long guestId, @PathVariable LocalDate start, @PathVariable LocalDate end) {
+        bookingService.reserve(roomId, guestId, start , end );
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }

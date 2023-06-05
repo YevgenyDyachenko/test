@@ -1,36 +1,30 @@
 package com.eu.test.domain;
+
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Data
 @Table
 @Entity
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Booking {
+@Setter
+public class Availability {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
-    private String nameBoo;
 
-    @Column
-    private LocalDate checkIn ;
-
-    @Column
-    private LocalDate checkOut;
-
-
-    @ManyToOne
-    @JoinColumn(name="guest_id")
-    private Guest guest;
+    LocalDate localData;
 
     @ManyToOne
     @JoinColumn(name="room_id")
     private Room room;
 
-
+    boolean isAvailable;
 }

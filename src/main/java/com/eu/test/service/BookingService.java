@@ -11,6 +11,8 @@ import com.eu.test.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -51,9 +53,33 @@ public class BookingService {
         return bookingRepository.findById(id).map(BookingService::buildBookingDto);
     }
 
-    public void reserve(Long roomId, Long guestId) {
+//    public void reserve(Long roomId, Long guestId) {
+//        Optional<Guest> optionalGuest = guestRepository.findById(guestId);
+//        Optional<Room> optionalRoom = roomRepository.findById(roomId);
+//
+//        if (optionalGuest.isPresent() && optionalRoom.isPresent()) {
+//
+//            var guest = guestRepository.findById(guestId).get();
+//            var room = roomRepository.findById(roomId).get();
+//            Booking booking = new Booking();
+//            booking.setRoom(room);
+//            booking.setGuest(guest);
+//            booking.setNameBoo(room.getNameRoom() + "-" + guest.getNameGuest());
+//            bookingRepository.save(booking);
+//
+//        } else {
+//            throw new NoSuchElementException("No elements");
+//        }
+//
+//    }
+
+    public void reserve(Long roomId, Long guestId, LocalDate start, LocalDate end) {
         Optional<Guest> optionalGuest = guestRepository.findById(guestId);
         Optional<Room> optionalRoom = roomRepository.findById(roomId);
+
+        List<LocalDate> range = new ArrayList<>();
+        range.add(start);
+        range.add(end);
 
         if (optionalGuest.isPresent() && optionalRoom.isPresent()) {
 
@@ -63,6 +89,7 @@ public class BookingService {
             booking.setRoom(room);
             booking.setGuest(guest);
             booking.setNameBoo(room.getNameRoom() + "-" + guest.getNameGuest());
+            room.getBookedDates().addAll(range);
             bookingRepository.save(booking);
 
         } else {
