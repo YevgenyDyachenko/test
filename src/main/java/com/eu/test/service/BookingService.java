@@ -8,6 +8,7 @@ import com.eu.test.dto.BookingDto;
 
 import com.eu.test.repository.GuestRepository;
 import com.eu.test.repository.RoomRepository;
+import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -67,24 +68,28 @@ public class BookingService {
         Optional<Guest> optionalGuest = guestRepository.findById(guestId);
         Optional<Room> optionalRoom = roomRepository.findById(roomId);
 
-        if (optionalGuest.isPresent() && optionalRoom.isPresent()
-        &&scheduleService.checkAvailability(roomRepository.findById(roomId).get(), start, end)) {
+        &&
+
+        if (optionalGuest.isPresent() && optionalRoom.isPresent()) {
 
             var guest = guestRepository.findById(guestId).get();
             var room = roomRepository.findById(roomId).get();
 
+            if(scheduleService.checkAvailability(room, start, end)){
+                Booking booking = new Booking();
+                booking.setRoom(room);
+                booking.setGuest(guest);
+                booking.setNameBoo(room.getNameRoom() + "-" + guest.getNameGuest());
+                booking.setCheckIn(start);
+                booking.setCheckOut(end);
+                bookingRepository.save(booking);
 
+                //creates objects in schedule table
+                scheduleService.saveRangeOfDates(room, start, end);
 
-            Booking booking = new Booking();
-            booking.setRoom(room);
-            booking.setGuest(guest);
-            booking.setNameBoo(room.getNameRoom() + "-" + guest.getNameGuest());
-                       booking.setCheckIn(start);
-            booking.setCheckOut(end);
-            bookingRepository.save(booking);
-
-            //creates objects in schedule table
-            scheduleService.saveRangeOfDates(room, start, end);
+            } else {
+                throw new EntityExistsException("Can't book on this period");
+            }
 
 
         } else {
