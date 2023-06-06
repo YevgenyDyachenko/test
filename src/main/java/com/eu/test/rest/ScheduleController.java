@@ -1,12 +1,17 @@
 package com.eu.test.rest;
 
+import com.eu.test.domain.Room;
+import com.eu.test.domain.Schedule;
 import com.eu.test.dto.ScheduleDto;
 
 import com.eu.test.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 @RestController
 @RequiredArgsConstructor
@@ -16,4 +21,13 @@ public class ScheduleController {
     public List<ScheduleDto> findAll() {
         return scheduleService.findAll();
     }
+
+
+    @GetMapping("/schedule/find")
+    public ResponseEntity<ScheduleDto> findByParam(@RequestParam Room room, @RequestParam LocalDate localDate) {
+        return scheduleService.findByRoomAndLocalDate(room, localDate)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }

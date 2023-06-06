@@ -80,50 +80,28 @@ public class BookingService {
             booking.setRoom(room);
             booking.setGuest(guest);
             booking.setNameBoo(room.getNameRoom() + "-" + guest.getNameGuest());
-            //room.getBookedDates().addAll(range);
-            booking.setCheckIn(start);
+                       booking.setCheckIn(start);
             booking.setCheckOut(end);
             bookingRepository.save(booking);
 
-            List<LocalDate> range = Stream.iterate(start, d -> d.isBefore(end), d -> d.plusDays(1))
-                    .collect(Collectors.toList());
+            //creates a list of Dates that have been booked
+//            List<LocalDate> rangeOfDatesInBooking =
+//            scheduleService.listDatesInRange(start, end);
 
 
-//            for (LocalDate date: range ) {
-//                Schedule schedule = new Schedule();
-//                        schedule.setRoom(room);
-//                        schedule.setLocalData(date);
-//                        schedule.setAvailable(true);
-//                scheduleService.save(schedule);
-//
-//            }
-
-
-
-//            for (LocalDate date: range ) {
-//
+            //creates objects of Schedule for this list of dates
+//            for (LocalDate date: rangeOfDatesInBooking ) {
 //                System.out.println(date);
-//                Guest guest1 = new Guest();
-//                guest1.setNameGuest("Bob" + date);
-//
-//                GuestService guestService1 = new GuestService(guestRepository);
-//                guestService1.save(guest1);
-//
+//                Schedule sch1 = new Schedule();
+//                sch1.setLocalData(date);
+//                sch1.setRoom(room);
+//                sch1.setBooked(true);
+//                ScheduleService scheduleService1 = new ScheduleService(scheduleRepository);
+//                scheduleService1.save(sch1);
 //            }
+        //    scheduleService.saveListDates(rangeOfDatesInBooking, room);
 
-            for (LocalDate date: range ) {
-
-                System.out.println(date);
-                Schedule sch1 = new Schedule();
-                sch1.setLocalData(date);
-                sch1.setRoom(room);
-                sch1.setBooked(true);
-
-                ScheduleService scheduleService1 = new ScheduleService(scheduleRepository);
-                scheduleService1.save(sch1);
-
-
-            }
+            scheduleService.saveRangeOfDates(room, start, end);
 
 
         } else {

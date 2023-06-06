@@ -11,5 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
-    Optional<Schedule> findScheduleByRoomAndData(Room room, LocalDate date);
+    Optional<Schedule> findScheduleByRoomAndLocalData(Room room, LocalDate localDate);
 }
+
