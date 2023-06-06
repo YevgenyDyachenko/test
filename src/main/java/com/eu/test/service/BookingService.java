@@ -68,7 +68,7 @@ public class BookingService {
         Optional<Guest> optionalGuest = guestRepository.findById(guestId);
         Optional<Room> optionalRoom = roomRepository.findById(roomId);
 
-        &&
+
 
         if (optionalGuest.isPresent() && optionalRoom.isPresent()) {
 
