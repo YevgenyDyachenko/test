@@ -7,9 +7,7 @@ import com.eu.test.dto.ScheduleDto;
 import com.eu.test.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,6 +26,18 @@ public class ScheduleController {
         return scheduleService.findByRoomAndLocalDate(room, localDate)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/schedule/{id}")
+    public void deleteById(@PathVariable Long id) {
+        scheduleService.deleteSchedule(id);
+
+    }
+
+    @DeleteMapping("/schedule/del")
+    public void deleteById(@RequestParam Room room, @RequestParam LocalDate localDate) {
+        scheduleService.deleteByRoomAndLocalDate(room, localDate);
+
     }
 
 }

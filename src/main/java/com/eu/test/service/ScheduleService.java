@@ -51,7 +51,7 @@ public class ScheduleService {
     //creates objects of Schedule for a list of dates
     public void saveListDates(List<LocalDate> dates, Room room) {
         for (LocalDate date: dates ) {
-            System.out.println(date);
+           // System.out.println(date);
             Schedule sch1 = new Schedule();
             sch1.setLocalData(date);
             sch1.setRoom(room);
@@ -68,8 +68,25 @@ public class ScheduleService {
         ScheduleService scheduleService1 = new ScheduleService(scheduleRepository);
             scheduleService1.saveListDates(scheduleService1.listDatesInRange(start, end), room);
 
-
     }
+
+    public void deleteSchedule(Long bookingId){
+
+        scheduleRepository.deleteById(bookingId);}
+
+    public void deleteListDates(List<LocalDate> dates, Room room){
+        for (LocalDate date: dates ) {
+
+           deleteByRoomAndLocalDate(room, date);
+        }
+    }
+
+    public void deleteByRoomAndLocalDate(Room room, LocalDate localDate){
+        long id= scheduleRepository.findScheduleByRoomAndLocalData(room, localDate).get().getId();
+        scheduleRepository.deleteById(id);
+    }
+
+
 
 
 }

@@ -42,6 +42,21 @@ public class BookingController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
+    @DeleteMapping("/bookings/{id}")
+    public void deleteById(@PathVariable Long id) {
+        bookingService.deleteBooking(id);
+
+    }
+
+    @PostMapping("/bookings/update/{oldBookingId}/rooms/{roomId}/guests/{guestId}/start/{start}/end/{end}")
+    public ResponseEntity<Void> update(@PathVariable Long oldBookingId, @PathVariable Long roomId, @PathVariable Long guestId, @PathVariable LocalDate start, @PathVariable LocalDate end) {
+        bookingService.updateBooking(oldBookingId, roomId, guestId, start , end );
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
+
+
 
 
 }

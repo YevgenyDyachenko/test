@@ -21,7 +21,7 @@ public class TestApplication {
         SpringApplication.run(TestApplication.class, args);
     }
 
-   // @Bean
+    @Bean
     public CommandLineRunner initialCreate(RoomService roomService,
                                            BookingService bookingService, GuestService guestService) {
         return (args) -> {

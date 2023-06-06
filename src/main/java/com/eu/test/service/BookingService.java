@@ -27,12 +27,13 @@ public class BookingService {
     private final GuestRepository guestRepository;
     private final BookingRepository bookingRepository;
 
-    private final ScheduleRepository scheduleRepository;
+
 
     private final ScheduleService scheduleService;
 
 
-    private final GuestService guestService;
+
+
 
     private static BookingDto buildBookingDto(Booking booking) {
 
@@ -69,9 +70,6 @@ public class BookingService {
         Optional<Guest> optionalGuest = guestRepository.findById(guestId);
         Optional<Room> optionalRoom = roomRepository.findById(roomId);
 
-
-
-
         if (optionalGuest.isPresent() && optionalRoom.isPresent()) {
 
             var guest = guestRepository.findById(guestId).get();
@@ -84,22 +82,6 @@ public class BookingService {
             booking.setCheckOut(end);
             bookingRepository.save(booking);
 
-            //creates a list of Dates that have been booked
-//            List<LocalDate> rangeOfDatesInBooking =
-//            scheduleService.listDatesInRange(start, end);
-
-
-            //creates objects of Schedule for this list of dates
-//            for (LocalDate date: rangeOfDatesInBooking ) {
-//                System.out.println(date);
-//                Schedule sch1 = new Schedule();
-//                sch1.setLocalData(date);
-//                sch1.setRoom(room);
-//                sch1.setBooked(true);
-//                ScheduleService scheduleService1 = new ScheduleService(scheduleRepository);
-//                scheduleService1.save(sch1);
-//            }
-        //    scheduleService.saveListDates(rangeOfDatesInBooking, room);
 
             scheduleService.saveRangeOfDates(room, start, end);
 
@@ -107,6 +89,24 @@ public class BookingService {
         } else {
             throw new NoSuchElementException("No elements");
         }
+
+    }
+
+
+    public void deleteBooking(Long bookingId){
+
+        LocalDate start = bookingRepository.findById(bookingId).get().getCheckIn();
+        LocalDate end = bookingRepository.findById(bookingId).get().getCheckOut();
+        Room room = bookingRepository.findById(bookingId).get().getRoom();
+        List<LocalDate> listDates= scheduleService.listDatesInRange(start, end);
+                scheduleService.deleteListDates(listDates, room);
+
+        bookingRepository.deleteById(bookingId);
+    }
+
+    public void updateBooking(Long oldBookingId, Long roomId, Long guestId, LocalDate start, LocalDate end ){
+        deleteBooking(oldBookingId);
+        reserve(roomId, guestId, start, end);
 
     }
 
