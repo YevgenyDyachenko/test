@@ -1,15 +1,14 @@
 package com.eu.test;
 
 
-import com.eu.test.domain.Guest;
-import com.eu.test.domain.Room;
 import com.eu.test.service.BookingService;
 import com.eu.test.service.GuestService;
+import com.eu.test.domain.Guest;
+import com.eu.test.domain.Room;
 import com.eu.test.service.RoomService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -21,7 +20,7 @@ public class TestApplication {
         SpringApplication.run(TestApplication.class, args);
     }
 
-    @Bean
+   // @Bean
     public CommandLineRunner initialCreate(RoomService roomService,
                                            BookingService bookingService, GuestService guestService) {
         return (args) -> {

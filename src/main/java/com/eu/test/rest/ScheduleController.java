@@ -1,10 +1,9 @@
 package com.eu.test.rest;
 
 import com.eu.test.domain.Room;
-import com.eu.test.domain.Schedule;
+import com.eu.test.service.ScheduleService;
 import com.eu.test.dto.ScheduleDto;
 
-import com.eu.test.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

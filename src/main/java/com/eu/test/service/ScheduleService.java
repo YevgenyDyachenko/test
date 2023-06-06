@@ -1,9 +1,8 @@
 package com.eu.test.service;
 
-import com.eu.test.domain.Room;
-import com.eu.test.dto.RoomDto;
-import com.eu.test.dto.ScheduleDto;
 import com.eu.test.domain.Schedule;
+import com.eu.test.domain.Room;
+import com.eu.test.dto.ScheduleDto;
 import com.eu.test.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -84,6 +83,20 @@ public class ScheduleService {
     public void deleteByRoomAndLocalDate(Room room, LocalDate localDate){
         long id= scheduleRepository.findScheduleByRoomAndLocalData(room, localDate).get().getId();
         scheduleRepository.deleteById(id);
+    }
+
+    public boolean checkAvailability(Room room, LocalDate start, LocalDate end){
+        var isAvailable = false;
+        List<LocalDate> dates = listDatesInRange(start, end);
+        for (LocalDate day: dates) {
+            if(findByRoomAndLocalDate(room, day).isPresent()) {
+                isAvailable = false;
+                break;
+            }else {
+                isAvailable=true;
+            }
+        }
+        return isAvailable;
     }
 
 

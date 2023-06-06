@@ -1,6 +1,5 @@
 package com.eu.test.dto;
 
-import com.eu.test.domain.Room;
 import lombok.Builder;
 import lombok.Data;
 

@@ -2,9 +2,9 @@ package com.eu.test.rest;
 
 
 import com.eu.test.domain.Room;
-
 import com.eu.test.dto.RoomDto;
 import com.eu.test.service.RoomService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
