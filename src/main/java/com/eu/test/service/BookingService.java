@@ -75,7 +75,7 @@ public class BookingService {
             var guest = guestRepository.findById(guestId).get();
             var room = roomRepository.findById(roomId).get();
 
-            if(scheduleService.checkAvailability(room, start, end)){
+            if(start.isAfter(LocalDate.now())|start.isEqual(LocalDate.now())&&scheduleService.checkAvailability(room, start, end)){
                 Booking booking = new Booking();
                 booking.setRoom(room);
                 booking.setGuest(guest);
