@@ -4,6 +4,7 @@ import com.eu.test.domain.Booking;
 
 import com.eu.test.domain.Room;
 
+import com.eu.test.domain.Schedule;
 import com.eu.test.dto.RoomDto;
 
 import com.eu.test.repository.RoomRepository;
@@ -29,6 +30,9 @@ public class RoomService {
                 .nameRoom(room.getNameRoom())
                 .boosForRoomName(room.getBoosForRoom().stream()
                         .map(Booking::getNameBoo)
+                        .collect(Collectors.toList()))
+                .datesReserved(room.getReservedDates().stream()
+                        .map(Schedule::getLocalData)
                         .collect(Collectors.toList()))
                 .build();
     }

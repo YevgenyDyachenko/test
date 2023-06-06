@@ -18,9 +18,11 @@ public class Booking {
     private String nameBoo;
 
     @Column
+    @Temporal(TemporalType.DATE)
     private LocalDate checkIn ;
 
     @Column
+    @Temporal(TemporalType.DATE)
     private LocalDate checkOut;
 
 

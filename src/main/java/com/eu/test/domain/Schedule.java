@@ -14,17 +14,19 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
-public class Availability {
+public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    LocalDate localData;
+    @Column
+    private LocalDate localData;
 
     @ManyToOne
     @JoinColumn(name="room_id")
     private Room room;
 
-    boolean isAvailable;
+    @Column
+    private boolean isBooked;
 }

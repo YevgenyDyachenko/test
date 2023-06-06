@@ -5,12 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Data
 @Table
@@ -24,16 +19,14 @@ public class Room {
     private Long id;
     @Column
     private String nameRoom;
-    @Column
-    private Boolean isAvailable =true;
+//    @Column
+//    private Boolean isAvailable =true;
 
-    @ElementCollection
-    private List<LocalDate> bookedDates;
 
     @OneToMany(mappedBy = "room")
     private List<Booking> boosForRoom;
 
     @OneToMany(mappedBy = "room")
-    private List<Availability> availability;
+    private List<Schedule> reservedDates;
 
 }
