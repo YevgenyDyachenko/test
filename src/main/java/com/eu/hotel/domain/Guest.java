@@ -20,6 +20,9 @@ public class Guest {
     @Column
     private String nameGuest;
 
+    @Column
+    private String phoneNumber;
+
     @OneToMany(mappedBy = "guest")
     private List<Booking> boosForGuest;
 

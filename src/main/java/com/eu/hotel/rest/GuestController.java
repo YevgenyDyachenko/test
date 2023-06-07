@@ -31,6 +31,12 @@ public class GuestController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    @GetMapping("/guests/{phone}")
+    public ResponseEntity<GuestDto> findByPhone(@PathVariable String phone) {
+        return guestService.findByPhoneNumber(phone)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 
 
 
