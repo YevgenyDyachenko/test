@@ -1,8 +1,8 @@
-package com.eu.test.rest;
+package com.eu.hotel.rest;
 
-import com.eu.test.domain.Room;
-import com.eu.test.service.ScheduleService;
-import com.eu.test.dto.ScheduleDto;
+import com.eu.hotel.domain.Room;
+import com.eu.hotel.service.ScheduleService;
+import com.eu.hotel.dto.ScheduleDto;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

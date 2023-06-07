@@ -1,9 +1,9 @@
-package com.eu.test.service;
+package com.eu.hotel.service;
 
-import com.eu.test.domain.Schedule;
-import com.eu.test.domain.Room;
-import com.eu.test.dto.ScheduleDto;
-import com.eu.test.repository.ScheduleRepository;
+import com.eu.hotel.domain.Schedule;
+import com.eu.hotel.domain.Room;
+import com.eu.hotel.dto.ScheduleDto;
+import com.eu.hotel.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

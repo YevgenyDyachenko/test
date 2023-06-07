@@ -1,13 +1,13 @@
-package com.eu.test.service;
+package com.eu.hotel.service;
 
-import com.eu.test.repository.BookingRepository;
-import com.eu.test.domain.Booking;
-import com.eu.test.domain.Guest;
-import com.eu.test.domain.Room;
-import com.eu.test.dto.BookingDto;
+import com.eu.hotel.repository.BookingRepository;
+import com.eu.hotel.domain.Booking;
+import com.eu.hotel.domain.Guest;
+import com.eu.hotel.domain.Room;
+import com.eu.hotel.dto.BookingDto;
 
-import com.eu.test.repository.GuestRepository;
-import com.eu.test.repository.RoomRepository;
+import com.eu.hotel.repository.GuestRepository;
+import com.eu.hotel.repository.RoomRepository;
 import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

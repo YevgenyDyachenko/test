@@ -1,11 +1,11 @@
-package com.eu.test;
+package com.eu.hotel;
 
 
-import com.eu.test.service.BookingService;
-import com.eu.test.service.GuestService;
-import com.eu.test.domain.Guest;
-import com.eu.test.domain.Room;
-import com.eu.test.service.RoomService;
+import com.eu.hotel.service.BookingService;
+import com.eu.hotel.service.GuestService;
+import com.eu.hotel.domain.Guest;
+import com.eu.hotel.domain.Room;
+import com.eu.hotel.service.RoomService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,10 +14,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
-public class TestApplication {
+public class HotelApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TestApplication.class, args);
+        SpringApplication.run(HotelApplication.class, args);
     }
 
    // @Bean

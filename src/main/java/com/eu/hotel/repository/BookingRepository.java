@@ -1,6 +1,6 @@
-package com.eu.test.repository;
+package com.eu.hotel.repository;
 
-import com.eu.test.domain.Booking;
+import com.eu.hotel.domain.Booking;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

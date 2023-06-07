@@ -1,8 +1,8 @@
-package com.eu.test.rest;
+package com.eu.hotel.rest;
 
-import com.eu.test.domain.Guest;
-import com.eu.test.dto.GuestDto;
-import com.eu.test.service.GuestService;
+import com.eu.hotel.domain.Guest;
+import com.eu.hotel.dto.GuestDto;
+import com.eu.hotel.service.GuestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,9 +1,9 @@
-package com.eu.test.rest;
+package com.eu.hotel.rest;
 
 
-import com.eu.test.domain.Room;
-import com.eu.test.dto.RoomDto;
-import com.eu.test.service.RoomService;
+import com.eu.hotel.domain.Room;
+import com.eu.hotel.dto.RoomDto;
+import com.eu.hotel.service.RoomService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

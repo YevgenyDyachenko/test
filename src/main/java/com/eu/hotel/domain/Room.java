@@ -1,4 +1,4 @@
-package com.eu.test.domain;
+package com.eu.hotel.domain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

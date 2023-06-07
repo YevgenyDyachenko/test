@@ -1,4 +1,4 @@
-package com.eu.test.dto;
+package com.eu.hotel.dto;
 import lombok.Builder;
 import lombok.Data;
 
