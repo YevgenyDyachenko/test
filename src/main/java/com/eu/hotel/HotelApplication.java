@@ -21,19 +21,19 @@ public class HotelApplication {
         SpringApplication.run(HotelApplication.class, args);
     }
 
-    @Bean
+   // @Bean
     public CommandLineRunner initialCreate(RoomService roomService,
                                            BookingService bookingService, GuestService guestService) {
         return (args) -> {
             Room room1 = new Room(1L, "FirstRoom", null, null);
-            Guest guest1 = new Guest(1L, "Thompson", "+380501681585", null);
+            Guest guest1 = new Guest(1L, "Thompson", "+380501931588", null);
 
             guestService.save(guest1);
             roomService.save(room1);
             bookingService.reserve(1L, 1L, LocalDate.of(2023, 9, 23), LocalDate.of(2023, 9, 24) );
 
             Room room2 = new Room(2L, "SecondRoom", null, null);
-            Guest guest2 = new Guest(2L, "Nicholson", "+380672281999", null);
+            Guest guest2 = new Guest(2L, "Nicholson", "number", null);
             guestService.save(guest2);
             roomService.save(room2);
             bookingService.reserve(2L, 2L, LocalDate.of(2023, 10, 2), LocalDate.of(2023, 10, 4));
@@ -45,7 +45,7 @@ public class HotelApplication {
             LocalDate date2 = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 
             Room room3 = new Room(3L, "ThirdRoom", null, null);
-            Guest guest3 = new Guest(3L, "Holmes", "+380661931544", null);
+            Guest guest3 = new Guest(3L, "Holmes", "380661931544", null);
             guestService.save(guest3);
             roomService.save(room3);
             bookingService.reserve(3L, 3L, date1 , date2);

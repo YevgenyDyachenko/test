@@ -46,6 +46,22 @@ public class GuestService {
         return guestRepository.findGuestByPhoneNumber(phone).map(GuestService::buildGuestDto);
     }
 
+    public Guest update(Long id, Guest guest){
+        Guest guestFmDb = guestRepository.findById(id).get();
+        if(guest.getNameGuest()!=null){
+            guestFmDb.setNameGuest(guest.getNameGuest());
+        }
+        if(guest.getPhoneNumber()!=null){
+            guestFmDb.setPhoneNumber(guest.getPhoneNumber());
+        }
+
+        return guestFmDb;
+    }
+
+    public Optional<GuestDto> findGuestByName(String name) {
+        return guestRepository.findGuestByNameGuest(name).map(GuestService::buildGuestDto);
+    }
+
 
 
 
