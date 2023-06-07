@@ -24,6 +24,7 @@ public class GuestService {
         return GuestDto.builder()
                 .id(guest.getId())
                 .nameGuest(guest.getNameGuest())
+                .phoneNumber(guest.getPhoneNumber())
                 .boosForGuestName(guest.getBoosForGuest().stream()
                         .map(Booking::getNameBoo)
                         .collect(Collectors.toList()))
@@ -39,6 +40,26 @@ public class GuestService {
 
     public Optional<GuestDto> findById(Long id) {
         return guestRepository.findById(id).map(GuestService::buildGuestDto);
+    }
+
+    public Optional<GuestDto> findByPhoneNumber(String phone) {
+        return guestRepository.findGuestByPhoneNumber(phone).map(GuestService::buildGuestDto);
+    }
+
+    public Guest update(Long id, Guest guest){
+        Guest guestFmDb = guestRepository.findById(id).get();
+        if(guest.getNameGuest()!=null){
+            guestFmDb.setNameGuest(guest.getNameGuest());
+        }
+        if(guest.getPhoneNumber()!=null){
+            guestFmDb.setPhoneNumber(guest.getPhoneNumber());
+        }
+
+        return guestFmDb;
+    }
+
+    public Optional<GuestDto> findGuestByName(String name) {
+        return guestRepository.findGuestByNameGuest(name).map(GuestService::buildGuestDto);
     }
 
 
