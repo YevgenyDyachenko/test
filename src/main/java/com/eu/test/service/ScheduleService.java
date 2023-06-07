@@ -50,7 +50,7 @@ public class ScheduleService {
     //creates objects of Schedule for a list of dates
     public void saveListDates(List<LocalDate> dates, Room room) {
         for (LocalDate date: dates ) {
-           // System.out.println(date);
+
             Schedule sch1 = new Schedule();
             sch1.setLocalData(date);
             sch1.setRoom(room);
