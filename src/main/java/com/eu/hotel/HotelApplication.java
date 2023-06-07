@@ -9,6 +9,7 @@ import com.eu.hotel.service.RoomService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -20,7 +21,7 @@ public class HotelApplication {
         SpringApplication.run(HotelApplication.class, args);
     }
 
-   // @Bean
+    @Bean
     public CommandLineRunner initialCreate(RoomService roomService,
                                            BookingService bookingService, GuestService guestService) {
         return (args) -> {
@@ -29,13 +30,13 @@ public class HotelApplication {
 
             guestService.save(guest1);
             roomService.save(room1);
-            bookingService.reserve(1L, 1L, LocalDate.of(2016, 9, 23), LocalDate.of(2016, 9, 24) );
+            bookingService.reserve(1L, 1L, LocalDate.of(2023, 9, 23), LocalDate.of(2023, 9, 24) );
 
             Room room2 = new Room(2L, "SecondRoom", null, null);
             Guest guest2 = new Guest(2L, "Nicholson", null);
             guestService.save(guest2);
             roomService.save(room2);
-            bookingService.reserve(2L, 2L, LocalDate.of(2017, 10, 2), LocalDate.of(2017, 10, 4));
+            bookingService.reserve(2L, 2L, LocalDate.of(2023, 10, 2), LocalDate.of(2023, 10, 4));
 
 
 
